@@ -45,7 +45,7 @@
   </div>
 </template>
 <script setup>
-  import {useRouter} from 'router'
+  import {useRouter} from 'vue-router'
   const router = useRouter();
   function adminJump(){
     router.push('/administratorReportView')
