@@ -10,11 +10,13 @@
 
 <script setup>
   import PaginationButton from '../common/paginationButton.vue';
-  import { useRoute } from 'vue-router';
+  import { useRoute,useRouter } from 'vue-router';
   const route = useRoute();
+  const router = useRouter();
   //ページ変更
   function pageChange(pgN){
     const catN = route.params.cat;
-    window.location=`../${catN}/${pgN}`;
+    router.push('../${catN}/${pgN}');
+    //window.location=`../${catN}/${pgN}`;
   }
 </script>
