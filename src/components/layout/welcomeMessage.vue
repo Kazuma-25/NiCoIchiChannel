@@ -40,7 +40,7 @@
       <p>あなたの一言が、誰かの音作りを変えるかもしれません。  </p>
       <p>それでは、良い機材沼ライフを──</p>
       <p class="pt-6 text-right font-semibold text-sm text-gray-600">▶ カテゴリを選択してスレッドを探してみましょう！</p>
-      <p class="text-white text-sm text-right" @="adminJump()">kanrigamen</p>
+      <p class="text-white text-sm text-right" @click="adminJump()">kanrigamen</p>
     </div>
   </div>
 </template>
