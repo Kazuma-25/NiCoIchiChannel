@@ -16,7 +16,7 @@
   //ページ変更
   function pageChange(pgN){
     const catN = route.params.cat;
-    router.push('../${catN}/${pgN}');
+    router.push(`../${catN}/${pgN}`);
     //window.location=`../${catN}/${pgN}`;
   }
 </script>
