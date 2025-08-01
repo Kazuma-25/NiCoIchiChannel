@@ -39,6 +39,7 @@
       <p>音楽機材沼は深く、広く、そして楽しい。  </p>
       <p>あなたの一言が、誰かの音作りを変えるかもしれません。  </p>
       <p>それでは、良い機材沼ライフを──</p>
+      <p class="pt-6 text-right font-semibold text-sm text-gray-600">▶ カテゴリを選択してスレッドを探してみましょう！</p>
     </div>
   </div>
 </template>

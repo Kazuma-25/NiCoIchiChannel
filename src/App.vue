@@ -3,7 +3,7 @@
     <template #mainBody>
       <!--各種ビュー-->
       <!--<homeView />-->
-      <router-view />
+      <router-view :key="$route.fullPath" />
     </template>
   </baseLayout>
 </template>

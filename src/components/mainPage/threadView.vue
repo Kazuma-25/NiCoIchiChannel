@@ -7,11 +7,16 @@
           <CommonButton sent="↻" @click="windowReload" />
           <CommonButton sent="スレッド作成" @click="threadCreateJump"/>
         </div>
-
-        <p class="pb-5 text-lg text-center font-bold">【 1/5 】</p>
+        <p class="pb-5 text-3xl text-center font-bold">{{ categories[catNum] }}_スレッド一覧</p>
+        <p class="pb-2 text-xl text-center font-bold">【{{ pgNum }}/5】</p>
         <ThreadsPagination />
-        
-        <ThreadCard v-for="(threads , idx_thread) in testArr" :key="idx_thread"
+        <!--
+        実装前に表示する件数に上限を設けるorフィルター処理した配列を作る（こっちの方がよさげ）
+        最終更新日時で並べ替え → ページに合わせて絞り込み処理
+        が安牌かな？
+        -->
+        <ThreadCard v-for="(threads , idx_thread) in filteredThreads"
+          :key="idx_thread"
           :id="threads.id"
           :title="threads.title"
           :summary="threads.summary"
@@ -26,17 +31,37 @@
 </template>
 
 <script setup>
+  import { useRoute } from 'vue-router';
+  //import {ref} from 'vue';
+  const route = useRoute();
+
+  const catNum = Number(route.params.cat);
+  const pgNum = Number(route.params.pg);
+
   import CategorySelector from '../layout/categorySelector.vue';
   import CommonButton from '../common/commonButton.vue';
   import ThreadCard from '../common/threadCard.vue';
   import ThreadsPagination from '../layout/threadsPagination.vue';
   function threadCreateJump(){
-    alert('ここにスレ立てページに飛ぶ処理を書く');
+    window.location="/create";
   }
   function windowReload(){
     window.location.reload();
   }
-  const testArr =[
+  //カテゴリ一覧
+  const categories =[
+    "🎸 ギター",
+    "🎸 ベース",
+    "🥁 ドラム",
+    "🎚 エフェクター",
+    "🔧 改造・パーツ総合",
+    "🎹 シンセ・DTM",
+    "🎤 マイク",
+    "🧰 小物・アクセサリー総合",
+    "🏠 宅録・スタジオ環境"
+  ]
+  //テスト用のスレデータ
+  const filteredThreads =[
     {id:"1",
       title:"スレタイのテスト",
       summary:"ここは概要欄です。ちゃんと表示されるかの確認用",

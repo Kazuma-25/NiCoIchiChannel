@@ -3,14 +3,18 @@
     <PaginationButton v-for="idx_pagination in 5"
       :key="idx_pagination"
       :pageNum="idx_pagination"
-      @click="testClick"
+      @click="pageChange(idx_pagination)"
     />
   </div>
 </template>
 
 <script setup>
   import PaginationButton from '../common/paginationButton.vue';
-  function testClick(){
-    alert("ここにページを指定して飛ぶ処理書く");
+  import { useRoute } from 'vue-router';
+  const route = useRoute();
+  //ページ変更
+  function pageChange(pgN){
+    const catN = route.params.cat;
+    window.location=`../${catN}/${pgN}`;
   }
 </script>
