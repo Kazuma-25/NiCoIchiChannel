@@ -32,7 +32,7 @@
 
 <script setup>
   import { useRoute } from 'vue-router';
-  //import {ref} from 'vue';
+  import { categories } from '@/js/utils/constants';
   const route = useRoute();
 
   const catNum = Number(route.params.cat);
@@ -48,18 +48,7 @@
   function windowReload(){
     window.location.reload();
   }
-  //カテゴリ一覧
-  const categories =[
-    "🎸 ギター",
-    "🎸 ベース",
-    "🥁 ドラム",
-    "🎚 エフェクター",
-    "🔧 改造・パーツ総合",
-    "🎹 シンセ・DTM",
-    "🎤 マイク",
-    "🧰 小物・アクセサリー総合",
-    "🏠 宅録・スタジオ環境"
-  ]
+
   //テスト用のスレデータ
   const filteredThreads =[
     {id:"1",

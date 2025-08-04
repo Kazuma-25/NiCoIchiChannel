@@ -1,21 +1,17 @@
 <template>
   <textarea 
-    v-model="mainSentence"
+    :value="props.modelValue"
+    @input="event => emit('update:modelValue', event.target.value)"
     :placeholder="props.placeholderSentence"
     class="pl-1 w-[100%] border-2 rounded-md h-100 text-base"
-    >
+  >
   </textarea>
 </template>
 
 <script setup>
-  import {ref} from 'vue'
-  const mainSentence = ref('');
   const props = defineProps({
-    placeholderSentence:{
-      type:String
-    }
+    modelValue:String,
+    placeholderSentence:String
   })
-  defineExpose({
-    expMain:mainSentence
-  });
+  const emit = defineEmits(['update:modelValue'])
 </script>

@@ -24,30 +24,33 @@
       <div class="text-left space-y-10">
         <div class="flex">
           <p>カテゴリ：</p>
-          <CmbBox ref="cmbCat" :targetArray="cmbCategories" />
+          <CmbBox v-model="cmbCat" :targetArray="cmbCategories" />
         </div>
         <div class="flex">
           <p class="w-[20%]">スレッドタイトル：</p>
-          <InputBox ref="threadTitleInp" placeholderSentence="空白禁止！" />
+          <InputBox v-model="threadTitleInp" placeholderSentence="空白禁止！" />
         </div>
         <div class="flex">
           <p class="w-[20%]">簡単な説明文：</p>
-          <InputBox ref="summaryInp" placeholderSentence="空白禁止！" />
+          <InputBox v-model="summaryInp" placeholderSentence="空白禁止！" />
         </div>
         <div class="flex">
           <p class="w-[20%]">ハンドルネーム：</p>
-          <InputBox ref="handlenameInp" placeholderSentence="名無しの機材厨さん" />
+          <InputBox v-model="handlenameInp" placeholderSentence="名無しの機材厨さん" />
         </div>
         <div>
           <p class="w-[20%]">初回投稿：</p>
           <TextareaBox 
-            ref="firstSentenceTxt"
+            v-model="firstSentenceTxt"
             placeholderSentence="初回書き込み。利用規約などはテンプレートも用意していますのでご利用ください！"
           />
         </div>
       </div>
       <div class="flex justify-between mt-15">
-        <CommonButton @click="browserback()" sent="スレ一覧に戻る"/>
+        <div>
+          <CommonButton @click="browserback()" sent="スレ一覧に戻る"/>
+          <CommonButton @click="allClear()" sent="入力内容をリセット"/>
+        </div>
         <div>
           <CommonButton @click="temptateSentence()" sent="テンプレート入力"/>
           <CommonButton @click="nextPreCheck()" sent="作成"/>
@@ -56,12 +59,14 @@
     </div>
   </div>
 </template>
+
 <script setup>
-  import { ref,onMounted,nextTick } from 'vue';
+  import { ref,onMounted } from 'vue';
   import CmbBox from '../forms/cmbBox.vue';
   import InputBox from '../forms/inputBox.vue';
   import CommonButton from '../common/commonButton.vue';
   import TextareaBox from '../forms/textareaBox.vue';
+  import { cmbCategories } from '@/js/utils/constants';
 
   const cmbCat = ref('');
   const threadTitleInp = ref('');
@@ -70,15 +75,14 @@
   const firstSentenceTxt =ref('')
   //状態保持
   function saveToSession() {
-    sessionStorage.setItem('category', cmbCat.value.expCmb);
-    sessionStorage.setItem('threadTitle', threadTitleInp.value.inp);
-    sessionStorage.setItem('summary', summaryInp.value.inp);
-    sessionStorage.setItem('handlenameThread', handlenameInp.value.inp);
-    sessionStorage.setItem('firstSentence', firstSentenceTxt.value.expMain);
+    sessionStorage.setItem('category', cmbCat.value);
+    sessionStorage.setItem('threadTitle', threadTitleInp.value);
+    sessionStorage.setItem('summary', summaryInp.value);
+    sessionStorage.setItem('handlenameThread', handlenameInp.value);
+    sessionStorage.setItem('firstSentence', firstSentenceTxt.value);
   }
   //状態復元
   onMounted(() => {
-    nextTick(()=>{
       const chkArr = [
         sessionStorage.getItem('category'),
         sessionStorage.getItem('threadTitle'),
@@ -95,29 +99,21 @@
       console.log('空白は' + i_sessStrage)
       if(i_sessStrage==0){
         console.log('復元します。')
-        cmbCat.value.expCmb = sessionStorage.getItem('category') || '';
-        threadTitleInp.value.inp = sessionStorage.getItem('threadTitle') || '';
-        summaryInp.value.inp = sessionStorage.getItem('summary') || '';
-        handlenameInp.value.inp = sessionStorage.getItem('handlenameThread') || '';
-        firstSentenceTxt.value.expMain = sessionStorage.getItem('firstSentence') || '';
-      }else{
-        console.log('復元しません。')
-        cmbCat.value.expCmb = '';
-        threadTitleInp.value.inp = '';
-        summaryInp.value.inp = '';
-        handlenameInp.value.inp = '';
-        firstSentenceTxt.value.expMain = '';
+        cmbCat.value = sessionStorage.getItem('category') || '';
+        threadTitleInp.value = sessionStorage.getItem('threadTitle') || '';
+        summaryInp.value = sessionStorage.getItem('summary') || '';
+        handlenameInp.value = sessionStorage.getItem('handlenameThread') || '';
+        firstSentenceTxt.value = sessionStorage.getItem('firstSentence') || '';
       }
-    })
   });
   //テスト用_入力取得
   function nextPreCheck(){
     const paramArr = [
-      encodeURIComponent(cmbCat.value.expCmb),
-      encodeURIComponent(threadTitleInp.value.inp),
-      encodeURIComponent(summaryInp.value.inp),
-      encodeURIComponent(handlenameInp.value.inp),
-      encodeURIComponent(firstSentenceTxt.value.expMain),
+      encodeURIComponent(cmbCat.value),
+      encodeURIComponent(threadTitleInp.value),
+      encodeURIComponent(summaryInp.value),
+      encodeURIComponent(handlenameInp.value),
+      encodeURIComponent(firstSentenceTxt.value),
     ]
     //入力チェック
     let i_inpCheck = 0
@@ -145,27 +141,24 @@
       if(!response.ok) throw new Error;
 
       const tmpl = await response.text()
-      firstSentenceTxt.value.expMain = tmpl
+      firstSentenceTxt.value = tmpl
     }catch(error){
       console.log(error)
     }
   }
+  //ブラウザバック
   function browserback(){
     history.back();
   }
-  //テンプレート文章
-  //カテゴリ一覧
-  const cmbCategories =[
-    "ギター",
-    "ベース",
-    "ドラム",
-    "エフェクター",
-    "改造・パーツ総合",
-    "シンセ・DTM",
-    "マイク",
-    "小物・アクセサリー総合",
-    "宅録・スタジオ環境"
-  ];
+  //削除
+  function allClear(){
+    cmbCat.value = '';
+    threadTitleInp.value = '';
+    summaryInp.value = '';
+    handlenameInp.value = '';
+    firstSentenceTxt.value = '';
+  }
+
   //注意書き
   const cautionArr = [
     "スレッドの目的を明確に定義すること。\n  投稿者が取り上げたいテーマ、話題の範囲を具体的に記載してください。\n  曖昧な主旨は議論の混乱を招く可能性があります。",

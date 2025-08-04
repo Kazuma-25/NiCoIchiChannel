@@ -1,15 +1,5 @@
 <script setup>
-  const categories =[
-    "🎸 ギター",
-    "🎸 ベース",
-    "🥁 ドラム",
-    "🎚 エフェクター",
-    "🔧 改造・パーツ総合",
-    "🎹 シンセ・DTM",
-    "🎤 マイク",
-    "🧰 小物・アクセサリー総合",
-    "🏠 宅録・スタジオ環境"
-  ]
+  import { categories } from '@/js/utils/constants';
 </script>
 
 <template>

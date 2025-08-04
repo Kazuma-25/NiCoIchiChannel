@@ -1,19 +1,15 @@
 <script setup>
-  import { ref } from 'vue'
   const props = defineProps({
-    placeholderSentence:{
-      type:String
-    }
+    modelValue: String,
+    placeholderSentence: String
   })
-  const inputValue = ref('')
-  defineExpose({
-    inp:inputValue
-  })
+  const emit = defineEmits(['update:modelValue'])
 </script>
 
 <template>
   <input
-    v-model="inputValue"
+    :value="props.modelValue"
+    @input="event => emit('update:modelValue', event.target.value)"
     class="border-2 rounded-md pl-1 w-[80%]"
     :placeholder="props.placeholderSentence"
   />

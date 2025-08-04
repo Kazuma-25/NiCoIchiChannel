@@ -46,6 +46,7 @@
 
 <script setup>
   import CommonButton from '../common/commonButton.vue';
+  import {cmbCategories} from '../../js/utils/constants.js';
   //定数
   const defaultHandlename = '名無しの機材厨さん';
   //
@@ -55,13 +56,20 @@
   const summary =  params.get('summary');
   const handlename =  params.get('handlename')||defaultHandlename;
   const firstSentence =  params.get('firstSentence');
-  //
+  //ブラウザバック
   function browserback(){
     history.back();
   }
+  //投稿
   function postThread(){
-    alert('ここに投稿の処理を書く')
+    console.log('ここに投稿の処理を書く');
+
+    //sessionStrage開放
     sessionStorage.clear();
-    console.log('cleared!');
+    console.log('sessionStrage_Cleared!');
+    //スレ一覧へ
+    const jumpCat = cmbCategories.indexOf(category) -1;
+    console.log(cmbCategories[jumpCat]);
+    window.location = `/thread/${jumpCat}/1`;
   }
 </script>
