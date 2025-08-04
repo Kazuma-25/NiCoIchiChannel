@@ -4,12 +4,14 @@ import homeView from '../components/mainPage/homeView.vue';
 import threadView from '../components/mainPage/threadView.vue';
 import createThread from '@/components/mainPage/createThread.vue';
 import preCheckThread from '@/components/mainPage/preCheckThread.vue';
+import readView from '@/components/mainPage/readView.vue';
 
 const routes = [
   { path: '/', component: homeView },
   { path: '/thread/:cat/:pg', component: threadView },
   { path: '/create', component:createThread },
   { path: '/preCheckThread', component:preCheckThread, props:true },
+  { path: '/read/:threadId', component:readView }
 ];
 
 const router = createRouter({

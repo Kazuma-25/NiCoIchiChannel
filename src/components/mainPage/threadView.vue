@@ -33,6 +33,7 @@
 <script setup>
   import { useRoute } from 'vue-router';
   import { categories } from '@/js/utils/constants';
+  import { filteredThreads } from '@/js/utils/constants';
   const route = useRoute();
 
   const catNum = Number(route.params.cat);
@@ -48,69 +49,5 @@
   function windowReload(){
     window.location.reload();
   }
-
-  //テスト用のスレデータ
-  const filteredThreads =[
-    {id:"1",
-      title:"スレタイのテスト",
-      summary:"ここは概要欄です。ちゃんと表示されるかの確認用",
-      last:"2025-07-22 16:23",
-      resNum:Math.floor(Math.random()*1000)
-    },
-    {id:"2",
-      title:"スレタイのテスト2",
-      summary:"ここは概要欄です2。ちゃんと表示されるかの確認用",
-      last:"2025-07-25 16:34",
-      resNum:Math.floor(Math.random()*1000)
-    },
-    {id:"3",
-      title:"スレタイのテスト3",
-      summary:"ここは概要欄です3。ちゃんと表示されるかの確認用",
-      last:"2025-07-25 16:00",
-      resNum:Math.floor(Math.random()*1000)
-    },
-    {id:"4",
-      title:"スレタイのテスト4",
-      summary:"ここは概要欄です4。ちゃんと表示されるかの確認用",
-      last:"2025-07-25 16:14",
-      resNum:Math.floor(Math.random()*1000)
-    },
-    {id:"5",
-      title:"スレタイのテスト5",
-      summary:"ここは概要欄です5。ちゃんと表示されるかの確認用",
-      last:"2025-07-25 16:20",
-      resNum:Math.floor(Math.random()*1000)
-    },
-    {id:"6",
-      title:"スレタイのテスト6",
-      summary:"ここは概要欄です6。ちゃんと表示されるかの確認用",
-      last:"2025-07-25 16:15",
-      resNum:Math.floor(Math.random()*1000)
-    },
-    {id:"7",
-      title:"スレタイのテスト7",
-      summary:"ここは概要欄です7。ちゃんと表示されるかの確認用",
-      last:"2025-07-25 16:52",
-      resNum:Math.floor(Math.random()*1000)
-    },
-    {id:"8",
-      title:"スレタイのテスト8",
-      summary:"ここは概要欄です8。ちゃんと表示されるかの確認用",
-      last:"2025-07-25 16:32",
-      resNum:Math.floor(Math.random()*1000)
-    },
-    {id:"9",
-      title:"スレタイのテスト9",
-      summary:"ここは概要欄です9。ちゃんと表示されるかの確認用",
-      last:"2025-07-25 16:03",
-      resNum:Math.floor(Math.random()*1000)
-    },
-    {id:"10",
-      title:"スレタイのテスト10",
-      summary:"ここは概要欄です10。ちゃんと表示されるかの確認用",
-      last:"2025-07-25 16:20",
-      resNum:Math.floor(Math.random()*1000)
-    },
-  ]
 </script>
 
