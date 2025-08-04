@@ -87,10 +87,12 @@ export const filteredThreads =[
   },
 ]
 //テスト用のレスデータ
+//idとかつけて追えた方が良いと思う
 export const responses =[
   {
     responseId:1,
     threadId:1,
+    autherId:987654321,
     postDay:'2025-08-04 13:00',
     auther:'testman1',
     main:'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.'
@@ -98,6 +100,7 @@ export const responses =[
   {
     responseId:2,
     threadId:1,
+    autherId:987654327,
     postDay:'2025-08-04 15:00',
     auther:'testman2',
     main:'ロレムイプサムとか使ってるジジイまだいたんだ。'
@@ -105,6 +108,7 @@ export const responses =[
   {
     responseId:3,
     threadId:3,
+    autherId:987654324,
     postDay:'2025-08-04 13:00',
     auther:'testwoman21',
     main:'初心者歓迎！'
@@ -112,6 +116,7 @@ export const responses =[
   {
     responseId:4,
     threadId:1,
+    autherId:987654326,
     postDay:'2025-08-04 13:00',
     auther:'asdfqewr',
     main:'うぃすう'
@@ -119,8 +124,9 @@ export const responses =[
   {
     responseId:5,
     threadId:2,
+    autherId:987654328,
     postDay:'2025-08-04 13:00',
-    auther:'asdfqewr',
+    auther:'nenennsa',
     main:'waoon'
   },
 ]

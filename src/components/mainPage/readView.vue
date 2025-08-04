@@ -1,7 +1,9 @@
 <template>
   <div class="w-[70%] pl-[10%] pr-[10%] bg-white p-8 rounded-2xl shadow-md">
     <div class="mt-4 text-gray-700 text-center text-xl">
+      <!--タイトル-->
       <h1 class="font-bold text-3xl pb-5">{{ filteredThreads[threadId].title }}</h1>
+      <!--ボタン郡-->
       <div class="flex justify-between">
         <div>
           <CommonButton sent="新着50件" />
@@ -10,7 +12,7 @@
         </div>
         <CommonButton @click='windowReload()' sent="↻" />
       </div>
-      
+      <!--レスカード-->
       <div>
         <ResponseCard
         v-for="(obj,idx_res) in responses" :key="idx_res" 
@@ -18,6 +20,8 @@
         :idx='idx_res + 1'
         />
       </div>
+      <!--レス投稿フォーム-->
+      
     </div>
   </div>
 </template>
