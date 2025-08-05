@@ -6,8 +6,12 @@
     idx:Number
     }
   )
-  function reportThread(threadId){
-    alert(threadId + 'ここに通報するときの処理を書く');
+  const emit = defineEmits(['reply','report']);
+  function handleReply(tIdx){
+    emit('reply','>>' +  tIdx );
+  }
+  function reportThread(responseId){
+    emit('report',responseId)
   }
 </script>
 
@@ -16,17 +20,22 @@
     <!--レス-->
     <div class="text-left w-[90%]">
       <button
-        @click="reportThread(tResObj.id)"
+        @click="handleReply(idx)"
         class="text-sm text-blue-500 align-baseline cursor-pointer">>>
       </button>
       <!--投稿view-->  
-      <p>{{ idx }}. 投稿者：{{ tResObj.auther }}</p>
-      <p class="pl-5 text-base">{{ tResObj.main }}</p>
+      <p>
+        {{ idx }}.
+        投稿者：{{ tResObj.auther }}
+        [{{ tResObj.autherId }}] 
+        {{ tResObj.postDay }}
+      </p>
+      <p class="pt-5 pl-5 text-base">{{ tResObj.main }}</p>
     </div>
     <div class="w-[10%] flex flex-col justify-between">
       <!--通報-->
       <button
-        @click="reportThread(tResObj.id)"
+        @click="reportThread(tResObj.responseId)"
         class="text-sm text-blue-500 align-baseline cursor-pointer">通報
       </button>
     </div>

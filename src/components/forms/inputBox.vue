@@ -10,7 +10,7 @@
   <input
     :value="props.modelValue"
     @input="event => emit('update:modelValue', event.target.value)"
-    class="border-2 rounded-md pl-1 w-[80%]"
+    class="border-2 rounded-md pl-1 w-[80%] bg-white"
     :placeholder="props.placeholderSentence"
   />
 </template>
