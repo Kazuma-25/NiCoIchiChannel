@@ -10,7 +10,10 @@
           <CommonButton sent="新着100件" />
           <CommonButton sent="全件表示" />
         </div>
-        <CommonButton @click='windowReload()' sent="↻" />
+        <div>
+          <CommonButton @click="browserBack()" sent="戻る" />
+          <CommonButton @click='windowReload()' sent="↻" />
+        </div>
       </div>
       <!--レスカード-->
       <div>
@@ -75,6 +78,9 @@
   function windowReload(){
     window.location.reload();
   }
+  function browserBack(){
+    history.back();
+  }
   //リプ
   function setReply(val){
     //1文字目のみ改行しない
@@ -84,9 +90,15 @@
   //通報処理
   function reportResponse(reportId){
     const tResponse = responses.find(responses => responses.responseId == reportId);
+    const reportText = window.prompt('通報理由を教えてください。')
+    if(!reportText){
+      alert('キャンセルします。')
+      return
+    }
     const reportMsg = '以下の内容を通報します。\nよろしいですか？\n\n'
       + '[投稿者]:' + tResponse.auther + '\n'
-      + '[本文]:' + tResponse.main
+      + '[本文]:' + tResponse.main + '\n'
+      + '[通報理由]:' + reportText
     const chkReport = window.confirm(reportMsg);
     //確認
     if(chkReport){

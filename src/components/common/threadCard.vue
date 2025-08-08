@@ -1,9 +1,11 @@
 
 <script setup>
   defineProps(['id', 'title', 'summary', 'last', 'resNum'])
-  function reportThread(threadId){
-    alert(threadId + 'ここに通報するときの処理を書く');
+  function handleReportThread(threadId){
+    emit('report',threadId)
   }
+  const emit = defineEmits(['report'])
+
 </script>
 
 <template>
@@ -18,7 +20,7 @@
       </div>
       <div>
         <button
-        @click="reportThread(id)"
+        @click="handleReportThread(id)"
         class="text-sm text-blue-500 align-baseline cursor-pointer">通報</button>
       </div>
   </div>

@@ -44,7 +44,7 @@
             v-model="firstSentenceTxt"
             placeholderSentence="初回書き込み。利用規約などはテンプレートも用意していますのでご利用ください！"
           />
-          <p class="text-right text-sm">{{ firstSentenceTxt }}/1500</p>
+          <p class="text-right text-sm">{{ firstSentenceTxt.length }}/1500</p>
         </div>
       </div>
       <div class="flex justify-between mt-15">

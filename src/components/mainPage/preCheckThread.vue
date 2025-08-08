@@ -47,6 +47,7 @@
 <script setup>
   import CommonButton from '../common/commonButton.vue';
   import {cmbCategories} from '../../js/utils/constants.js';
+  import { baseUrl } from '../../js/utils/constants.js';
   //定数
   const defaultHandlename = '名無しの機材厨さん';
   //
@@ -61,10 +62,49 @@
     history.back();
   }
   //投稿
-  function postThread(){
-    console.log('ここに投稿の処理を書く');
+  async function postThread(){
+    const hashRes = await fetch(`${baseUrl}/createHashId`);
+    const hashId = await hashRes.text();
+    //スレッド投稿
+    const threadRegist = await fetch(`${baseUrl}/post/threads`,{
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json' // JSON データを送る場合はこれを指定
+      },
+      // 送信するデータ
+      body: JSON.stringify({
+        categoryId:cmbCategories.indexOf(category)-1,
+        threadsTitle:threadTitle,
+        summary:summary,
+        autherHash:hashId,
+        auther_name:handlename
+      })
+    })
+    
+    const threadData = await threadRegist.json();
+    const threadId = threadData.threadId;
+    console.log(threadData)
 
-    //sessionStrage開放
+    //レス投稿
+    const responseRegist = await fetch(`${baseUrl}/post/response`,{
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json' // JSON データを送る場合はこれを指定
+      },
+      // 送信するデータ
+      body: JSON.stringify({
+        threadId:threadId,
+        autherId:hashId,
+        autherName:handlename,
+        body:firstSentence,
+        img:''
+      })
+    })
+    
+    const responseData = await responseRegist.json();
+    console.log(responseData);
+    alert('投稿しました！');
+    //sessionStorage開放
     sessionStorage.clear();
     console.log('sessionStrage_Cleared!');
     //スレ一覧へ
@@ -72,4 +112,6 @@
     console.log(cmbCategories[jumpCat]);
     window.location = `/thread/${jumpCat}/1`;
   }
+
+  
 </script>

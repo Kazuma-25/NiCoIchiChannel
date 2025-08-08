@@ -27,10 +27,10 @@
       <p>
         {{ idx }}.
         投稿者：{{ tResObj.auther }}
-        [{{ tResObj.autherId }}] 
         {{ tResObj.postDay }}
       </p>
       <p class="pt-5 pl-5 text-base">{{ tResObj.main }}</p>
+      <p class="text-sm text-right pt-3">ID:[{{ tResObj.autherId }}]</p>
     </div>
     <div class="w-[10%] flex flex-col justify-between">
       <!--通報-->
