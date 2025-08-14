@@ -89,7 +89,7 @@
     const responseRegist = await fetch(`${baseUrl}/post/response`,{
       method: 'POST',
       headers: {
-          'Content-Type': 'application/json' // JSON データを送る場合はこれを指定
+        'Content-Type': 'application/json' // JSON データを送る場合はこれを指定
       },
       // 送信するデータ
       body: JSON.stringify({

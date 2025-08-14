@@ -13,6 +13,20 @@
   function reportThread(responseId){
     emit('report',responseId)
   }
+  //日本の時間に修正
+  function convertDate(targetDate){
+    const date = new Date(targetDate);
+    return date.toLocaleString('ja-JP', {
+      timeZone: 'Asia/Tokyo',
+      weekday: 'short',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    })
+  }
 </script>
 
 <template>
@@ -26,16 +40,16 @@
       <!--投稿view-->  
       <p>
         {{ idx }}.
-        投稿者：{{ tResObj.auther }}
-        {{ tResObj.postDay }}
+        投稿者：{{ tResObj.auther_name }}
+        （{{ convertDate(tResObj.posted_at) }}）
       </p>
-      <p class="pt-5 pl-5 text-base">{{ tResObj.main }}</p>
-      <p class="text-sm text-right pt-3">ID:[{{ tResObj.autherId }}]</p>
+      <p class="pt-5 pl-5 text-base whitespace-break-spaces">{{ tResObj.body }}</p>
+      <p class="text-sm text-right pt-3">ID:[{{ tResObj.auther_id }}]</p>
     </div>
     <div class="w-[10%] flex flex-col justify-between">
       <!--通報-->
       <button
-        @click="reportThread(tResObj.responseId)"
+        @click="reportThread(tResObj.response_id)"
         class="text-sm text-blue-500 align-baseline cursor-pointer">通報
       </button>
     </div>

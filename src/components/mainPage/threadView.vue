@@ -63,13 +63,23 @@
   function windowReload(){
     window.location.reload();
   }
-
+  //日本の時間に修正
   function convertDate(targetDate){
     const date = new Date(targetDate);
-    return date.toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })
+    return date.toLocaleString('ja-JP', {
+      timeZone: 'Asia/Tokyo',
+      weekday: 'short',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    })
   }
+
   //通報
-  function reportThread(threadId){
+   async function reportThread(threadId){
     const targetThread = threadData.value.find(threadData=>threadData.thread_id==threadId);
     const reportText = window.prompt('通報理由を教えてください。');
     if(!reportText){
@@ -82,12 +92,35 @@
     const chkReport = window.confirm(reportMsg);
     if(chkReport){
       //ここにPOST処理(通報)******************************
-      
+      //通報者のID計算
+      const hashRes = await fetch(`${baseUrl}/createHashId`);
+      const hashId = await hashRes.text();
+
+      const reportThread = await fetch(`${baseUrl}/post/reportThread`,{
+        method:'POST' ,
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          threadId:targetThread.thread_id,
+          reportThreadReason:reportText,
+          reporterId:hashId
+        })
+      })
+      const reportThreadData = await reportThread.json();
+
       //*************************************************
-      alert('通報しました。\nご協力ありがとうございました。')
+      if(reportThread.ok){
+        alert('通報しました。\nご協力ありがとうございました。')
+        console.log(reportThreadData);
+      }else{
+        alert('requestError_reportThread')
+      }
     }else{
       alert('キャンセルします。')
     }
   }
+
+
 </script>
 
