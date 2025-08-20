@@ -1,3 +1,8 @@
+<!--
+  スレ閲覧画面、
+  /read/:スレID
+-->
+
 <template>
   <div class="w-[70%] pl-[10%] pr-[10%] bg-white p-8 rounded-2xl shadow-md">
     <div class="mt-4 text-gray-700 text-center text-xl">
@@ -55,10 +60,16 @@
           <p class="w-[20%] text-left">ハンドルネーム：</p>
           <InputBox v-model="handlenameInp" placeholderSentence="名無しの機材厨さん(任意)" />
         </div>
+        <!--
+        ______________________________________________________\
+        不適切な画像投稿があった時に匿名うｐだと消せない＆
+        1時間に50枚までの制約があるから一旦画像投稿はやめとく
+        ______________________________________________________\
         <div class="flex">
-          <p class="w-[20%] text-left">画像添付：</p>
-          <input ref="imgFile" class="border-2 rounded-md bg-white px-2" type="file" accept=".jpg,.jpeg,.png">
-        </div>
+            <p class="w-[20%] text-left">画像添付：</p>
+            <input ref="imgFile" class="border-2 rounded-md bg-white px-2" type="file" accept=".jpg,.jpeg,.png">
+          </div>
+        -->
         <div class="flex">
           <p class="w-[10%] text-left">本文：</p>
           <TextareaBox v-model="mainSentenceInp" placeholderSentence="レス番号上の「>>」を押すことでリプができます！" />
@@ -86,7 +97,7 @@
   import {ref,onMounted} from 'vue';
 
   const handlenameInp = ref('');
-  const imgFile = ref('');
+  //const imgFile = ref('');
   const mainSentenceInp = ref ('');
   const resInputArea = ref(null);
   const threadTitleRef = ref('');
@@ -203,11 +214,10 @@
     const autherVal = handlenameInp.value || '名無しの機材厨さん';
     const autherMsg = '[投稿者]:' + autherVal;
     
-    const imgMsg ='[画像]:' + (imgFile.value.files.length? 'あり':'なし');
+    //const imgMsg ='[画像]:' + (imgFile.value.files.length? 'あり':'なし');
     //事前確認
     const chkMsg = '以下の内容で投稿します。\nよろしいですか？\n\n'
       + autherMsg + '\n'
-      + imgMsg + '\n'
       + mainMsg;
     const chkFlag = window.confirm(chkMsg);
     if(chkFlag){
@@ -225,7 +235,7 @@
             autherId:hashId,
             autherName:autherVal,
             body:main,
-            img:''//一旦IMGは後回し
+            img:''//IMGは無し
           })
         })
         const responseData = await responseRegist.json();

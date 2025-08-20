@@ -1,3 +1,7 @@
+<!--
+  スレッド一覧
+  /thread/:cat/:pg
+-->
 <template>
   <div class="w-[90%] flex">
     <CategorySelector />
@@ -70,8 +74,8 @@
       timeZone: 'Asia/Tokyo',
       weekday: 'short',
       year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
+      month: 'numeric',
+      day: 'numeric',
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit'

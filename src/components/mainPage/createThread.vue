@@ -1,3 +1,7 @@
+<!--
+  スレ立て画面
+  /create
+-->
 <template>
   <div class="w-[70%] pl-[10%] pr-[10%] bg-white p-8 rounded-2xl shadow-md">
     <div class="mt-4 text-gray-700 text-center text-xl">

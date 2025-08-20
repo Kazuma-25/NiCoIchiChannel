@@ -1,4 +1,7 @@
-
+<!--
+  スレ立て確認画面、
+  /preCheckThread
+-->
 <template>
   <div class="w-[80%] px-[10%] py-8 bg-white rounded-2xl shadow-md">
     <div class="mt-4 text-gray-700 text-left text-xl space-y-5">

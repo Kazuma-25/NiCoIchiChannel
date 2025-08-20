@@ -1,3 +1,7 @@
+<!--
+  ホーム画面
+  /
+-->
 <template>
   <div class="w-[90%] flex">
     <categorySelector />
