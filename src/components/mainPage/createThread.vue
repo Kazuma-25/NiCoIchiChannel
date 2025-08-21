@@ -140,7 +140,7 @@
   }
   //初回投稿のテンプレ入力
   async function temptateSentence(){
-    const tmplPath = new URL('../others/createThreadTemplate.txt', import.meta.url).href
+    const tmplPath = new URL('/components/others/createThreadTemplate.txt', import.meta.url).href
     try{
       const response = await fetch(tmplPath);
       if(!response.ok) throw new Error;

@@ -103,15 +103,15 @@
   const threadTitleRef = ref('');
   const visibleNum = ref(1);
 
-  const maxResponse = 1000;
+  const maxResponse = 250;
   const shortResponse = 50;
 
   const route = useRoute();
   const threadId = route.params.threadId;
   const endMsgJson = {
     threadId:threadId,
-    autherId:'_',
-    autherName:'システム',
+    auther_id:'_',
+    authauther_name:'システム',
     body:`このスレは${maxResponse}を超えました!\n新しいスレッドを立ててください!`,
     img:''
   
