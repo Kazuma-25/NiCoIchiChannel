@@ -240,9 +240,20 @@
         })
         const responseData = await responseRegist.json();
         console.log(responseData);
-      }
+      };
+      const patchData = async(threadId) =>{
+        console.log(threadId);
+        const fetchNewDate = await fetch(`${baseUrl}/patchNewDate/${threadId}`,{
+          method:'PATCH'
+        });
+        if(!fetchNewDate.ok){
+          console.log('Error_patchResponse')
+        }else{
+          console.log('レスのデータを書き換えました。')
+        }
+      };
       await fetchResponse();
-      
+      await patchData(threadId);
       //**********************************
       alert('投稿しました！');
       windowReload();
