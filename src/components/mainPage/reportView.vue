@@ -69,10 +69,10 @@
   const manage = ref(0);
   let pass = "";
 
-  import CommonButton from '../common/commonButton.vue';
-  import reportThreadCard from '../common/reportThreadCard.vue';
-  import reportPagination from '../layout/reportPagination.vue';
-  import reportResponseCard from '../common/reportResponseCard.vue';
+  import CommonButton from '@/components/common/commonButton.vue';
+  import reportThreadCard from '@/components/common/reportThreadCard.vue';
+  import reportPagination from '@/components/layout/reportPagination.vue';
+  import reportResponseCard from '@/components/common/reportResponseCard.vue';
   //通報スレデータ取得
   const threadData = ref([]);
   const fetchThread = async(pass,pg)=>{

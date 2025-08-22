@@ -22,7 +22,7 @@ export const categories =[
   "🧰 小物・アクセサリー総合",
   "🏠 宅録・スタジオ環境"
 ]
-export const baseUrl = "http://localhost:3000";
+export const baseUrl = "https://nicochanapi.onrender.com";
 
 //テスト用のスレデータ
 export const filteredThreads =[
