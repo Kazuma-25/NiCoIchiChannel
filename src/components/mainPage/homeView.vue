@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-  import categorySelector from '../layout/categorySelector.vue';
-  import welcomeMessage from '../layout/welcomeMessage.vue';
+  import categorySelector from '@/components/layout/categorySelector.vue';
+  import welcomeMessage from '@/components/layout/welcomeMessage.vue';
 </script>
 

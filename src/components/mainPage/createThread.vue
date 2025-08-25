@@ -67,11 +67,14 @@
 
 <script setup>
   import { ref,onMounted } from 'vue';
-  import CmbBox from '../forms/cmbBox.vue';
-  import InputBox from '../forms/inputBox.vue';
-  import CommonButton from '../common/commonButton.vue';
-  import TextareaBox from '../forms/textareaBox.vue';
+  import CmbBox from '@/components/forms/cmbBox.vue';
+  import InputBox from '@/components/forms/inputBox.vue';
+  import CommonButton from '@/components/common/commonButton.vue';
+  import TextareaBox from '@/components/forms/textareaBox.vue';
   import { cmbCategories } from '@/js/utils/constants';
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
 
   const cmbCat = ref('');
   const threadTitleInp = ref('');
@@ -114,11 +117,11 @@
   //テスト用_入力取得
   function nextPreCheck(){
     const paramArr = [
-      encodeURIComponent(cmbCat.value),
-      encodeURIComponent(threadTitleInp.value),
-      encodeURIComponent(summaryInp.value),
-      encodeURIComponent(handlenameInp.value),
-      encodeURIComponent(firstSentenceTxt.value),
+      cmbCat.value,
+      threadTitleInp.value,
+      summaryInp.value,
+      handlenameInp.value,
+      firstSentenceTxt.value
     ]
     //入力チェック
     let i_inpCheck = 0
@@ -135,7 +138,17 @@
       alert(`未入力箇所が${i_inpCheck}箇所あります！\nハンネ以外は必須事項です!`);
     }else{
       saveToSession();
-      window.location=`/preCheckThread?category=${paramArr[0]}&threadTitle=${paramArr[1]}&summary=${paramArr[2]}&handlename=${paramArr[3]}&firstSentence=${paramArr[4]}`;
+      router.push({
+        path:'/preCheckThread',
+        query:{
+          category: paramArr[0],
+          threadTitle: paramArr[1],
+          summary: paramArr[2],
+          handlename: paramArr[3],
+          firstSentence: paramArr[4]
+        }
+      })
+      //window.location=`/preCheckThread?category=${paramArr[0]}&threadTitle=${paramArr[1]}&summary=${paramArr[2]}&handlename=${paramArr[3]}&firstSentence=${paramArr[4]}`;
     }
   }
   //初回投稿のテンプレ入力

@@ -48,13 +48,15 @@
 </template>
 
 <script setup>
-  import CommonButton from '../common/commonButton.vue';
-  import {cmbCategories} from '../../js/utils/constants.js';
-  import { baseUrl } from '../../js/utils/constants.js';
+  import CommonButton from '@/components/common/commonButton.vue';
+  import {cmbCategories} from '@/js/utils/constants.js';
+  import { baseUrl } from '@/js/utils/constants.js';
+  import { useRouter } from 'vue-router';
   //定数
   const defaultHandlename = '名無しの機材厨さん';
   //
   const params = new URLSearchParams(window.location.search);
+  const router = useRouter();
   const category = params.get('category');
   const threadTitle = params.get('threadTitle');
   const summary =  params.get('summary');
@@ -106,14 +108,14 @@
     
     const responseData = await responseRegist.json();
     console.log(responseData);
-    alert('投稿しました！');
+    alert('スレ立てしました！');
     //sessionStorage開放
     sessionStorage.clear();
     console.log('sessionStrage_Cleared!');
     //スレ一覧へ
     const jumpCat = cmbCategories.indexOf(category) -1;
     console.log(cmbCategories[jumpCat]);
-    window.location = `/thread/${jumpCat}/1`;
+    router.push(`/thread/${jumpCat}/1`)
   }
 
   

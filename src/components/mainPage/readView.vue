@@ -88,12 +88,12 @@
   //テスト用、実際にはフェッチ処理
   //スレIDに一致するレスデータを取得 → 投稿日時順に並び替えって感じで
   import { baseUrl} from '@/js/utils/constants';
-  import CommonButton from '../common/commonButton.vue';
-  import ResponseCard from '../common/responseCard.vue';
-  import ScoreHr from '../layout/scoreHr.vue';
+  import CommonButton from '@/components/common/commonButton.vue';
+  import ResponseCard from '@/components/common/responseCard.vue';
+  import ScoreHr from '@/components/layout/scoreHr.vue';
 
-  import InputBox from '../forms/inputBox.vue';
-  import TextareaBox from '../forms/textareaBox.vue';
+  import InputBox from '@/components/forms/inputBox.vue';
+  import TextareaBox from '@/components/forms/textareaBox.vue';
   import {ref,onMounted} from 'vue';
 
   const handlenameInp = ref('');
@@ -149,8 +149,9 @@
     });
   }
   //更新
-  function windowReload(){
-    window.location.reload();
+  async function windowReload(){
+    await fetchResponse();
+    await fetchThread();
   }
   //ブラウザバック
   function browserBack(){
@@ -256,7 +257,9 @@
       await patchData(threadId);
       //**********************************
       alert('投稿しました！');
-      windowReload();
+      await windowReload();
+        handlenameInp.value = '';
+        mainSentenceInp.value = '';
     }else{
       alert('キャンセルします！');
     }

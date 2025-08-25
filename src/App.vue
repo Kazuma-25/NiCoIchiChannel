@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-  import baseLayout from './components/layout/baseLayout.vue';
+  import baseLayout from '@/components/layout/baseLayout.vue';
 </script>
 
 <style>

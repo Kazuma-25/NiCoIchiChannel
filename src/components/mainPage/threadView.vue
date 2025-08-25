@@ -8,7 +8,7 @@
     <div class="w-[70%] bg-white p-8 rounded-2xl shadow-md">
       <div class="mt-4 text-gray-700">
         <div class="flex justify-end">
-          <CommonButton sent="↻" @click="windowReload" />
+          <CommonButton sent="↻" @click="fetchThread" />
           <CommonButton sent="スレッド作成" @click="threadCreateJump"/>
         </div>
         <p class="pb-5 text-3xl text-center font-bold">{{ categories[catNum] }}_スレッド一覧</p>
@@ -36,10 +36,11 @@
 
 <script setup>
   import { ref,onMounted } from 'vue';
-  import { useRoute } from 'vue-router';
+  import { useRoute,useRouter } from 'vue-router';
   import { categories } from '@/js/utils/constants';
   import { baseUrl } from '@/js/utils/constants';
   const route = useRoute();
+  const router = useRouter();
 
   const catNum = Number(route.params.cat);
   const pgNum = Number(route.params.pg);
@@ -61,12 +62,9 @@
   onMounted(fetchThread)
 
   function threadCreateJump(){
-    window.location="/create";
+    router.push("/create")
   }
   
-  function windowReload(){
-    window.location.reload();
-  }
   //日本の時間に修正
   function convertDate(targetDate){
     const date = new Date(targetDate);

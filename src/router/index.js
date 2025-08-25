@@ -1,7 +1,7 @@
 // router/index.js
 import { createRouter, createWebHistory } from 'vue-router';
-import homeView from '../components/mainPage/homeView.vue';
-import threadView from '../components/mainPage/threadView.vue';
+import homeView from '@/components/mainPage/homeView.vue';
+import threadView from '@/components/mainPage/threadView.vue';
 import createThread from '@/components/mainPage/createThread.vue';
 import preCheckThread from '@/components/mainPage/preCheckThread.vue';
 import readView from '@/components/mainPage/readView.vue';
