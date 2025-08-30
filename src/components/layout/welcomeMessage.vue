@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[70%] bg-white p-8 rounded-2xl shadow-md">
+  <div class="text-lg w-full bg-white p-8 rounded-2xl shadow-md">
     <div class="mt-4 text-gray-700">
       <p>ようこそ、2-5-1Channelへ。</p>
       <p>機材を語り、機材に騙られ、気づけば財布が空になる。  </p>
@@ -23,7 +23,7 @@
       <p>---</p>
       <br>
       
-      <p>※ご利用にあたってのお願い</p>
+      <p class="font-bold">※ご利用にあたってのお願い</p>
       <p>・誹謗中傷、荒らし、煽り行為は本当に面倒くさいことになるのでやめてください。  </p>
       <p>・機材の好みは人それぞれ。宗教戦争はほどほどに。  </p>
       <p>・個人情報の書き込みは禁止です。  </p>

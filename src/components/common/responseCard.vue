@@ -27,6 +27,10 @@
       second: '2-digit'
     })
   }
+  //IDの省略、先頭5文字+末尾5文字
+  function omitId(tId){
+    return tId.substr(0,5)+tId.substr(tId.length-5)
+  }
 </script>
 
 <template>
@@ -44,7 +48,7 @@
         （{{ convertDate(tResObj.posted_at) }}）
       </p>
       <p class="pt-5 pl-5 text-base whitespace-break-spaces" v-html='tResObj.body'></p>
-      <p class="text-sm text-right pt-3">ID:[{{ tResObj.auther_id }}]</p>
+      <p class="text-sm text-right pt-3">ID:[{{ omitId(tResObj.auther_id) }}]</p>
     </div>
     <div class="w-[10%] flex flex-col justify-between">
       <!--通報-->

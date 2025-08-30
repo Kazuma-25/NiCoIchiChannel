@@ -3,9 +3,10 @@
   /thread/:cat/:pg
 -->
 <template>
-  <div class="w-[90%] flex">
-    <CategorySelector />
-    <div class="w-[70%] bg-white p-8 rounded-2xl shadow-md">
+  <div class="w-[90%] lg:flex">
+    <categorySelectorRSP class="mb-2 lg:hidden" />
+    <CategorySelector class="hidden lg:block" />
+    <div class="lg:w-[70%] bg-white p-8 rounded-2xl shadow-md">
       <div class="mt-4 text-gray-700">
         <div class="flex justify-end">
           <CommonButton sent="↻" @click="fetchThread" />
@@ -46,6 +47,7 @@
   const pgNum = Number(route.params.pg);
 
   import CategorySelector from '../layout/categorySelector.vue';
+  import categorySelectorRSP from '../layout/categorySelectorRSP.vue';
   import CommonButton from '../common/commonButton.vue';
   import ThreadCard from '../common/threadCard.vue';
   import ThreadsPagination from '../layout/threadsPagination.vue';

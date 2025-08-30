@@ -4,7 +4,7 @@
 -->
 
 <template>
-  <div class="w-[70%] pl-[10%] pr-[10%] bg-white p-8 rounded-2xl shadow-md">
+  <div class="w-[90%] lg:w-[70%] pl-[10%] pr-[10%] bg-white p-8 rounded-2xl shadow-md">
     <div class="mt-4 text-gray-700 text-center text-xl">
       <!--タイトル-->
       <h1 class="font-bold text-3xl mb-5 bg-blue-300 py-3 rounded-xl">{{ threadTitleRef }}</h1>
@@ -64,11 +64,11 @@
         ______________________________________________________\
         不適切な画像投稿があった時に匿名うｐだと消せない＆
         1時間に50枚までの制約があるから一旦画像投稿はやめとく
-        ______________________________________________________\
         <div class="flex">
             <p class="w-[20%] text-left">画像添付：</p>
             <input ref="imgFile" class="border-2 rounded-md bg-white px-2" type="file" accept=".jpg,.jpeg,.png">
           </div>
+        ______________________________________________________\
         -->
         <div class="flex">
           <p class="w-[10%] text-left">本文：</p>

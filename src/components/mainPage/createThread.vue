@@ -3,8 +3,8 @@
   /create
 -->
 <template>
-  <div class="w-[70%] pl-[10%] pr-[10%] bg-white p-8 rounded-2xl shadow-md">
-    <div class="mt-4 text-gray-700 text-center text-xl">
+  <div class="w-[80%] lg:w-[70%] pl-[10%] pr-[10%] bg-white p-8 rounded-2xl shadow-md">
+    <div class="mt-4 text-gray-700 text-center text-md lg:text-xl">
       <p class="text-red-500 font-bold text-2xl pb-10">！スレッド作成時の注意事項！</p>
       <p>スレッド作成時には以下の注意事項を遵守してください！</p>
       <ol class="text-left space-y-7 whitespace-break-spaces pt-10">
@@ -26,24 +26,24 @@
       <!--投稿フォーム-->
       <p class="pt-10 pb-10">【投稿フォーム】</p>
       <div class="text-left space-y-10">
-        <div class="flex">
+        <div class="lg:flex">
           <p>カテゴリ：</p>
           <CmbBox v-model="cmbCat" :targetArray="cmbCategories" />
         </div>
-        <div class="flex">
-          <p class="w-[20%]">スレッドタイトル：</p>
+        <div class="lg:flex">
+          <p class="lg:w-[20%]">スレッドタイトル：</p>
           <InputBox v-model="threadTitleInp" placeholderSentence="空白禁止！" />
         </div>
-        <div class="flex">
-          <p class="w-[20%]">簡単な説明文：</p>
+        <div class="lg:flex">
+          <p class="lg:w-[20%]">簡単な説明文：</p>
           <InputBox v-model="summaryInp" placeholderSentence="空白禁止！" />
         </div>
-        <div class="flex">
-          <p class="w-[20%]">ハンドルネーム：</p>
+        <div class="lg:flex">
+          <p class="lg:w-[20%]">ハンドルネーム：</p>
           <InputBox v-model="handlenameInp" placeholderSentence="名無しの機材厨さん" />
         </div>
         <div>
-          <p class="w-[20%]">初回投稿：</p>
+          <p class="lg:w-[20%]">初回投稿：</p>
           <TextareaBox 
             v-model="firstSentenceTxt"
             placeholderSentence="初回書き込み。利用規約などはテンプレートも用意していますのでご利用ください！"
@@ -51,7 +51,7 @@
           <p class="text-right text-sm">{{ firstSentenceTxt.length }}/1500</p>
         </div>
       </div>
-      <div class="flex justify-between mt-15">
+      <div class="hidden lg:flex justify-between mt-15">
         <div>
           <CommonButton @click="browserback()" sent="スレ一覧に戻る"/>
           <CommonButton @click="allClear()" sent="入力内容をリセット"/>
@@ -60,6 +60,14 @@
           <CommonButton @click="temptateSentence()" sent="テンプレート入力"/>
           <CommonButton @click="nextPreCheck()" sent="作成"/>
         </div>
+      </div>
+      <!--スマホ/タブレット用-->
+      <div class="flex justify-between mt-15 lg:hidden">
+          <CommonButton @click="allClear()" sent="入力内容をリセット"/>
+          <div>
+            <CommonButton @click="temptateSentence()" sent="テンプレート入力"/>
+            <CommonButton @click="nextPreCheck()" sent="作成"/>
+          </div>
       </div>
     </div>
   </div>
