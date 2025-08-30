@@ -3,45 +3,77 @@
   /preCheckThread
 -->
 <template>
-  <div class="w-[80%] px-[10%] py-8 bg-white rounded-2xl shadow-md">
-    <div class="mt-4 text-gray-700 text-left text-xl space-y-5">
+  <div class="w-[95%] md:w-[80%] px-[10%] py-8 bg-white rounded-2xl shadow-md">
+    <div class="mt-4 text-gray-700 text-left text-sm md:text-xl space-y-5">
       <p class="text-center font-bold text-2xl">【 確認 】</p>
       <hr class="pt-2 opacity-50 border-gray-500" />
-      <div class="flex whitespace-break-spaces">
-        <p class="w-[17%]">カテゴリ</p>  
-        <p class="w-[3%]">：</p>
-        <p class="w-[80%]">{{ category }}</p>
-      </div>
-      
-      <div class="flex whitespace-break-spaces">
-        <p class="w-[17%]">スレタイ</p>
-        <p class="w-[3%]">：</p>
-        <p class="w-[80%]">{{ threadTitle }}</p>
-      </div>
-      
-      <div class="flex whitespace-break-spaces">
-        <p class="w-[17%]">サマリー</p>
-        <p class="w-[3%]">：</p>  
-        <p class="w-[80%]">{{ summary }}</p>
-      </div>
+      <!--PC-->
+      <div class="space-y-5 hidden md:block">
+        <div class="flex whitespace-break-spaces">
+          <p class="w-[17%]">カテゴリ</p>  
+          <p class="w-[3%]">：</p>
+          <p class="w-[80%]">{{ category }}</p>
+        </div>
+        
+        <div class="flex whitespace-break-spaces">
+          <p class="w-[17%]">スレタイ</p>
+          <p class="w-[3%]">：</p>
+          <p class="w-[80%]">{{ threadTitle }}</p>
+        </div>
+        
+        <div class="flex whitespace-break-spaces">
+          <p class="w-[17%]">サマリー</p>
+          <p class="w-[3%]">：</p>  
+          <p class="w-[80%]">{{ summary }}</p>
+        </div>
 
-      <div class="flex whitespace-break-spaces">
-        <p class="w-[17%]">ハンドルネーム</p>
-        <p class="w-[3%]">：</p>
-        <p class="w-[80%]">{{ handlename }}</p>
-      </div>
+        <div class="flex whitespace-break-spaces">
+          <p class="w-[17%]">ハンドルネーム</p>
+          <p class="w-[3%]">：</p>
+          <p class="w-[80%]">{{ handlename }}</p>
+        </div>
 
-      <div class="flex whitespace-break-spaces">
-        <p class="w-[17%]">初回投稿</p>
-        <p class="w-[3%]">：</p>
-        <p class="w-[80%]">{{ firstSentence }}</p>
+        <div class="flex whitespace-break-spaces">
+          <p class="w-[17%]">初回投稿</p>
+          <p class="w-[3%]">：</p>
+          <p class="w-[80%]">{{ firstSentence }}</p>
+        </div>
+      </div>
+      <!--モバイル用-->
+      <div class="space-y-5 lg:hidden">
+        <div>
+          <p>[カテゴリ]</p>
+          <p>{{ category }}</p>
+        </div>
+        
+
+        <div>
+          <p>[スレタイ]</p>
+          <p>{{ threadTitle }}</p>
+        </div>
+        
+
+        <div>
+          <p>[サマリー]</p>
+          <p>{{ summary }}</p>
+        </div>
+        
+
+        <div>
+          <p>[ハンドルネーム]</p>
+          <p>{{ handlename }}</p>
+        </div>
+        <div>
+          <p>[初回投稿]</p>
+          <p class="whitespace-break-spaces">{{ firstSentence }}</p>
+        </div>
       </div>
       <hr class="pt-2 opacity-50 border-gray-500" />
       <p class="text-center">以上の内容でスレ立てしますか？</p>
       <div class="flex justify-center">
         <CommonButton @click="browserback()" sent="←戻る"/>
         <p class="w-[10%]"></p>
-        <CommonButton @click="postThread()" sent="投稿する→" />
+        <CommonButton @click="postThread()" sent="投稿→" />
       </div>
     </div>
   </div>

@@ -62,12 +62,12 @@
         </div>
       </div>
       <!--スマホ/タブレット用-->
-      <div class="flex justify-between mt-15 lg:hidden">
-          <CommonButton @click="allClear()" sent="入力内容をリセット"/>
-          <div>
-            <CommonButton @click="temptateSentence()" sent="テンプレート入力"/>
-            <CommonButton @click="nextPreCheck()" sent="作成"/>
-          </div>
+      <div class="flex flex-col items-center mt-15 lg:hidden space-y-5">
+        <CommonButton @click="allClear()" sent="入力リセット"/>
+        <div>
+          <CommonButton @click="temptateSentence()" sent="テンプレ文入力"/>
+          <CommonButton @click="nextPreCheck()" sent=" 作成 "/>
+        </div>
       </div>
     </div>
   </div>
@@ -178,11 +178,14 @@
   }
   //削除
   function allClear(){
-    cmbCat.value = '';
-    threadTitleInp.value = '';
-    summaryInp.value = '';
-    handlenameInp.value = '';
-    firstSentenceTxt.value = '';
+    const clearInput = confirm('入力を消去します。')
+    if(clearInput){
+      cmbCat.value = '';
+      threadTitleInp.value = '';
+      summaryInp.value = '';
+      handlenameInp.value = '';
+      firstSentenceTxt.value = '';
+    }
   }
 
   //注意書き
