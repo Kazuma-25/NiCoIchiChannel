@@ -12,7 +12,7 @@
           <CommonButton sent="↻" @click="fetchThread" />
           <CommonButton sent="スレッド作成" @click="threadCreateJump"/>
         </div>
-        <p class="pb-5 text-3xl text-center font-bold">{{ categories[catNum] }}_スレッド一覧</p>
+        <p class="pb-5 text-2xl lg:text-3xl text-center font-bold">{{ categories[catNum] }}_スレッド一覧</p>
         <p class="pb-2 text-xl text-center font-bold">【{{ pgNum }}/5】</p>
         <ThreadsPagination />
         <!--

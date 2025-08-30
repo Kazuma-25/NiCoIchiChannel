@@ -1,5 +1,5 @@
 <template>
-  <div class="text-lg w-full bg-white p-8 rounded-2xl shadow-md">
+  <div class="text-md md:text-lg w-full bg-white p-8 rounded-2xl shadow-md">
     <div class="mt-4 text-gray-700">
       <p>ようこそ、2-5-1Channelへ。</p>
       <p>機材を語り、機材に騙られ、気づけば財布が空になる。  </p>

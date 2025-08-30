@@ -3,11 +3,11 @@
   /create
 -->
 <template>
-  <div class="w-[80%] lg:w-[70%] pl-[10%] pr-[10%] bg-white p-8 rounded-2xl shadow-md">
-    <div class="mt-4 text-gray-700 text-center text-md lg:text-xl">
-      <p class="text-red-500 font-bold text-2xl pb-10">！スレッド作成時の注意事項！</p>
+  <div class="w-[95%] lg:w-[70%] pl-[10%] pr-[10%] bg-white p-8 rounded-2xl shadow-md">
+    <div class="mt-4 text-gray-700 text-center text-base lg:text-xl">
+      <p class="text-red-500 font-bold text-[1.1rem] md:text-2xl pb-10">！スレッド作成時の注意事項！</p>
       <p>スレッド作成時には以下の注意事項を遵守してください！</p>
-      <ol class="text-left space-y-7 whitespace-break-spaces pt-10">
+      <ol class=" text-sm md:text-base lg:text-xl text-left space-y-7 whitespace-break-spaces pt-10">
         <li v-for="( caution , idx_caution ) in cautionArr" :key="idx_caution">
           {{ idx_caution +1 }}.{{ caution }}
         </li>

@@ -3,10 +3,10 @@
 </script>
 
 <template>
-  <div class="text-xl w-full bg-white p-5 rounded-2xl shadow-md flex flex-col">
+  <div class="w-full bg-white p-5 rounded-2xl shadow-md flex flex-col">
     <p class="text-2xl text-gray-700 text-center mb-3">【カテゴリ一】</p>
     <div class="flex justify-center">
-      <ul class="w-[40%]">
+      <ul class="w-[40%] text-base md:text-xl ml-5">
         <router-link 
           v-for="(cat,idx_cat) in categories.slice(0,Math.round(categories.length/2))" 
           :key="idx_cat"
@@ -15,7 +15,7 @@
           <li class="mt-5">{{ cat }}</li>
         </router-link>
       </ul>
-      <ul class="w-[40%]">
+      <ul class="w-[60%] text-[0.9rem] md:text-xl ">
         <router-link 
           v-for="(cat,idx_cat) in categories.slice(Math.round(categories.length/2))" 
           :key="idx_cat"
