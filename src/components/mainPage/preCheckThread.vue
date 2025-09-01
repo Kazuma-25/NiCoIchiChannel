@@ -46,23 +46,21 @@
           <p>{{ category }}</p>
         </div>
         
-
         <div>
           <p>[スレタイ]</p>
           <p>{{ threadTitle }}</p>
         </div>
         
-
         <div>
           <p>[サマリー]</p>
           <p>{{ summary }}</p>
         </div>
         
-
         <div>
           <p>[ハンドルネーム]</p>
           <p>{{ handlename }}</p>
         </div>
+        
         <div>
           <p>[初回投稿]</p>
           <p class="whitespace-break-spaces">{{ firstSentence }}</p>

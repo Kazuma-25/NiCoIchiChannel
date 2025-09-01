@@ -4,10 +4,10 @@
 -->
 
 <template>
-  <div class="w-[90%] lg:w-[70%] pl-[10%] pr-[10%] bg-white p-8 rounded-2xl shadow-md">
+  <div class="w-[90%] lg:w-[70%] px-[3%] md:px-[10%] bg-white md:py-8 rounded-2xl shadow-md">
     <div class="mt-4 text-gray-700 text-center text-xl">
       <!--タイトル-->
-      <h1 class="font-bold text-3xl mb-5 bg-blue-300 py-3 rounded-xl">{{ threadTitleRef }}</h1>
+      <h1 class="font-bold text-lg md:text-xl lg:text-3xl mb-5 bg-blue-300 py-3 rounded-xl">{{ threadTitleRef }}</h1>
       <!--ボタン郡-->
       <div class="flex justify-between">
         <div>
@@ -53,11 +53,11 @@
       <!--レス投稿フォーム-->
       <div
         ref="resInputArea"
-        class="bg-blue-200 rounded-xl shadow-md p-4 pr-10 hover:shadow-lg transition mt-2 text-lg space-y-3"
+        class="bg-blue-200 rounded-xl shadow-md p-4 pr-10 hover:shadow-lg transition mt-2 text-sm md:text-lg space-y-3"
         v-if="responseData.length < maxResponse-1"
         >
-        <div class="flex justify-left">
-          <p class="w-[20%] text-left">ハンドルネーム：</p>
+        <div class="flex flex-col">
+          <p class="text-left">ハンドルネーム：</p>
           <InputBox v-model="handlenameInp" placeholderSentence="名無しの機材厨さん(任意)" />
         </div>
         <!--
@@ -70,8 +70,8 @@
           </div>
         ______________________________________________________\
         -->
-        <div class="flex">
-          <p class="w-[10%] text-left">本文：</p>
+        <div class="flex flex-col">
+          <p class="text-left">本文：</p>
           <TextareaBox v-model="mainSentenceInp" placeholderSentence="レス番号上の「>>」を押すことでリプができます！" />
         </div>
         <p class="text-sm text-right">{{ mainSentenceInp.length }}/1500</p>

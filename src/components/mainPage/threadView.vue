@@ -6,7 +6,7 @@
   <div class="w-[90%] lg:flex">
     <categorySelectorRSP class="mb-2 lg:hidden" />
     <CategorySelector class="hidden lg:block" />
-    <div class="lg:w-[70%] bg-white p-8 rounded-2xl shadow-md">
+    <div class="lg:w-[70%] bg-white p-2 lg:p-8 rounded-2xl shadow-md">
       <div class="mt-4 text-gray-700">
         <div class="flex justify-end">
           <CommonButton sent="↻" @click="fetchThread" />
