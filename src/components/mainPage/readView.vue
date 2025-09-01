@@ -55,9 +55,12 @@
         ref="resInputArea"
         class="bg-blue-200 rounded-xl shadow-md p-4 hover:shadow-lg transition mt-2 text-sm md:text-lg space-y-3"
         v-if="responseData.length < maxResponse-1"
-        >
+      >
         <div class="flex flex-col">
-          <p class="text-left">ハンドルネーム：</p>
+          <div class="flex justify-between">
+            <p class="text-left">ハンドルネーム：</p>
+            <CommonButton class="mb-1" @click='windowReload()' sent="↻" />
+          </div>
           <InputBox v-model="handlenameInp" placeholderSentence="名無しの機材厨さん(任意)" />
         </div>
         <!--
