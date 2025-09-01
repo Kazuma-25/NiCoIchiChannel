@@ -4,7 +4,7 @@
 -->
 
 <template>
-  <div class="w-[90%] lg:w-[70%] px-[3%] md:px-[10%] bg-white md:py-8 rounded-2xl shadow-md">
+  <div class="w-[90%] lg:w-[70%] px-[3%] md:px-[10%] bg-white py-4 md:py-8 rounded-2xl shadow-md">
     <div class="mt-4 text-gray-700 text-center text-xl">
       <!--タイトル-->
       <h1 class="font-bold text-lg md:text-xl lg:text-3xl mb-5 bg-blue-300 py-3 rounded-xl">{{ threadTitleRef }}</h1>
@@ -53,7 +53,7 @@
       <!--レス投稿フォーム-->
       <div
         ref="resInputArea"
-        class="bg-blue-200 rounded-xl shadow-md p-4 pr-10 hover:shadow-lg transition mt-2 text-sm md:text-lg space-y-3"
+        class="bg-blue-200 rounded-xl shadow-md p-4 hover:shadow-lg transition mt-2 text-sm md:text-lg space-y-3"
         v-if="responseData.length < maxResponse-1"
         >
         <div class="flex flex-col">
